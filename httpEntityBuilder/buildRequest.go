@@ -1,4 +1,4 @@
-package httpEntityBuilders
+package httpEntityBuilder
 
 import (
 	"encoding/json"
@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"bitbucket.org/aiventureteam/horizon-go/horizon/httpEntities"
+	"bitbucket.org/aiventureteam/horizon-go/httpEntity"
 )
 
 func getBody(r *http.Request) []byte {
@@ -18,9 +18,9 @@ func getBody(r *http.Request) []byte {
 	return body
 }
 
-func BuildRequest(r *http.Request) httpEntities.Request {
+func BuildRequest(r *http.Request) httpEntity.Request {
 	body := getBody(r)
-	var request httpEntities.Request
+	var request httpEntity.Request
 	err := json.Unmarshal(body, &request)
 	if err != nil {
 		log.Fatal(err)

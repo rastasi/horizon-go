@@ -1,12 +1,12 @@
-package webhookEndpoints
+package webhookEndpoint
 
 import (
 	"net/http"
 
-	"bitbucket.org/aiventureteam/horizon-go/horizon/entities"
+	"bitbucket.org/aiventureteam/horizon-go/entity"
 )
 
-func GetWebhook(configuration entities.Configuration) func(w http.ResponseWriter, r *http.Request) {
+func GetWebhook(configuration entity.Configuration) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		mode := r.URL.Query()["hub.mode"][0]
 		token := r.URL.Query()["hub.verify_token"][0]

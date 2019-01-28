@@ -1,36 +1,36 @@
-package webhookEndpoints
+package webhookEndpoint
 
 import (
 	"bytes"
 	"net/http"
 
-	"bitbucket.org/aiventureteam/horizon-go/horizon/entities"
-	"bitbucket.org/aiventureteam/horizon-go/horizon/httpEntityBuilders"
+	"bitbucket.org/aiventureteam/horizon-go/entity"
+	"bitbucket.org/aiventureteam/horizon-go/httpEntityBuilder"
 )
 
-func PostWebhook(configuration entities.Configuration) func(w http.ResponseWriter, r *http.Request) {
+func PostWebhook(configuration entity.Configuration) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		request := httpEntityBuilders.BuildRequest(r)
+		request := httpEntityBuilder.BuildRequest(r)
 
 		if request.Object == "page" {
 			event := request.Entry[0].Messaging[0]
 			if event.Message.Text != "" {
 				senderID := event.Sender.Id
 				text := getResponseText(event.Message.Text)
-				response := httpEntityBuilders.BuildResponse(senderID, text)
-				sendResponse(response)
+				response := httpEntityBuilder.BuildResponse(senderID, text)
+				sendResponse(response, configuration)
 			}
 		}
 		w.Write([]byte("EVENT_RECEIVED"))
 	}
 }
 
-func sendResponse(response []byte) {
-	request, err := http.NewRequest("POST", messagesURL, bytes.NewBuffer(response))
+func sendResponse(response []byte, configuration entity.Configuration) {
+	request, err := http.NewRequest("POST", configuration.MessagesURL, bytes.NewBuffer(response))
 	request.Header.Set("Content-Type", "application/json")
 
 	q := request.URL.Query()
-	q.Add("access_token", pageAccessToken)
+	q.Add("access_token", configuration.PageAccessToken)
 	request.URL.RawQuery = q.Encode()
 
 	client := &http.Client{}

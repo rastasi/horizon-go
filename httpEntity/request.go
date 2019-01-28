@@ -1,4 +1,4 @@
-package httpEntities
+package httpEntity
 
 type Messaging struct {
 	Sender    Participant `json:"sender"`

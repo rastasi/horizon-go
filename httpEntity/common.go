@@ -1,4 +1,4 @@
-package httpEntities
+package httpEntity
 
 type Participant struct {
 	Id string `json:"id"`

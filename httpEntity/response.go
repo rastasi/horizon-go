@@ -1,4 +1,4 @@
-package httpEntities
+package httpEntity
 
 type Response struct {
 	Recipient Participant `json:"recipient"`
