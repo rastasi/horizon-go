@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"bitbucket.org/aiventureteam/horizon-go/httpEntity"
+	"github.com/rastasi/horizon-go/httpEntity"
 )
 
 func getBody(r *http.Request) []byte {

@@ -3,7 +3,7 @@ package webhookEndpoint
 import (
 	"net/http"
 
-	"bitbucket.org/aiventureteam/horizon-go/entity"
+	"github.com/rastasi/horizon-go/entity"
 )
 
 func GetWebhook(configuration entity.Configuration) func(w http.ResponseWriter, r *http.Request) {

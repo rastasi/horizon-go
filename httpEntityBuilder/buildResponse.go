@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"log"
 
-	"bitbucket.org/aiventureteam/horizon-go/httpEntity"
+	"github.com/rastasi/horizon-go/httpEntity"
 )
 
 func getJSONResponse(response httpEntity.Response) []byte {

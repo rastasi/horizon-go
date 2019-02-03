@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"bitbucket.org/aiventureteam/horizon-go/entity"
-	"bitbucket.org/aiventureteam/horizon-go/webhookEndpoint"
+	"github.com/rastasi/horizon-go/entity"
+	"github.com/rastasi/horizon-go/webhookEndpoint"
 	"github.com/gorilla/mux"
 )
 

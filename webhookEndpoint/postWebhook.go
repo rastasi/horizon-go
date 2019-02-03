@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"net/http"
 
-	"bitbucket.org/aiventureteam/horizon-go/entity"
-	"bitbucket.org/aiventureteam/horizon-go/httpEntityBuilder"
+	"github.com/rastasi/horizon-go/entity"
+	"github.com/rastasi/horizon-go/httpEntityBuilder"
 )
 
 func PostWebhook(configuration entity.Configuration) func(w http.ResponseWriter, r *http.Request) {
